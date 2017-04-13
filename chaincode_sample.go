@@ -137,6 +137,7 @@ func UpdateLoanApplication(stub shim.ChaincodeStubInterface, args []string) ([]b
 }
 
 func (t *SampleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
+	fmt.Println("Init Complete")
 	return nil, nil
 }
 
