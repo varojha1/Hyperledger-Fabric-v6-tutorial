@@ -48,27 +48,27 @@ type LoanApplication struct {
 }
 
 func GetLoanApplication(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-	fmt.Println("Entering GetLoanApplication")
+	logger.Debug("Entering GetLoanApplication")
 
 	if len(args) < 1 {
-		fmt.Println("Invalid number of arguments")
+		logger.Error("Invalid number of arguments")
 		return nil, errors.New("Missing loan application ID")
 	}
 
 	var loanApplicationId = args[0]
 	bytes, err := stub.GetState(loanApplicationId)
 	if err != nil {
-		fmt.Println("Could not fetch loan application with id "+loanApplicationId+" from ledger", err)
+		logger.Error("Could not fetch loan application with id "+loanApplicationId+" from ledger", err)
 		return nil, err
 	}
 	return bytes, nil
 }
 
 func CreateLoanApplication(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-	fmt.Println("Entering CreateLoanApplication")
+	logger.Debug("Entering CreateLoanApplication")
 
 	if len(args) < 2 {
-		fmt.Println("Invalid number of args")
+		logger.Error("Invalid number of args")
 		return nil, errors.New("Expected atleast two arguments for loan application creation")
 	}
 
@@ -77,7 +77,7 @@ func CreateLoanApplication(stub shim.ChaincodeStubInterface, args []string) ([]b
 
 	err := stub.PutState(loanApplicationId, []byte(loanApplicationInput))
 	if err != nil {
-		fmt.Println("Could not save loan application to ledger", err)
+		logger.Error("Could not save loan application to ledger", err)
 		return nil, err
 	}
 
@@ -86,7 +86,7 @@ func CreateLoanApplication(stub shim.ChaincodeStubInterface, args []string) ([]b
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("Successfully saved loan application")
+	logger.Info("Successfully saved loan application")
 	return nil, nil
 
 }
@@ -95,7 +95,7 @@ func CreateLoanApplication(stub shim.ChaincodeStubInterface, args []string) ([]b
 Updates the status of the loan application
 **/
 func UpdateLoanApplication(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-	fmt.Println("Entering UpdateLoanApplication")
+	logger.Debug("Entering UpdateLoanApplication")
 
 	if len(args) < 2 {
 		logger.Error("Invalid number of args")
@@ -137,7 +137,6 @@ func UpdateLoanApplication(stub shim.ChaincodeStubInterface, args []string) ([]b
 }
 
 func (t *SampleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
-	fmt.Println("Init Complete")
 	return nil, nil
 }
 
@@ -149,7 +148,7 @@ func (t *SampleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 }
 
 func GetCertAttribute(stub shim.ChaincodeStubInterface, attributeName string) (string, error) {
-	fmt.Println("Entering GetCertAttribute")
+	logger.Debug("Entering GetCertAttribute")
 	attr, err := stub.ReadCertAttribute(attributeName)
 	if err != nil {
 		return "", errors.New("Couldn't get attribute " + attributeName + ". Error: " + err.Error())
@@ -187,9 +186,9 @@ func main() {
 
 	err := shim.Start(new(SampleChaincode))
 	if err != nil {
-		fmt.Println("Could not start SampleChaincode")
+		logger.Error("Could not start SampleChaincode")
 	} else {
-		fmt.Println("SampleChaincode successfully started")
+		logger.Info("SampleChaincode successfully started")
 	}
 
 }

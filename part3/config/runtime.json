@@ -1,0 +1,56 @@
+{
+	"env": "local",
+	"processname": "BlockchainSampleClient",
+	"request": {
+		"size": "16mb"
+	},
+
+	"chaincode": {
+		"id": "",
+		"name": "cp_chaincode"
+	},
+
+	"databases": {
+		"devWorksAppMaster": "devworks_app_master"
+
+	},
+
+	"VCAP_SERVICES": {
+		"cloudantNoSQLDB": [{
+			"name": "Cloudant NoSQL DB-vern",
+			"label": "cloudantNoSQLDB",
+			"plan": "Lite",
+			"credentials": {
+				
+			}
+		}],
+		"ibm-blockchain-5-prod": [{
+			"name": "Blockchain-v6-devWorks",
+			"label": "ibm-blockchain-5-prod",
+			"plan": "ibm-blockchain-plan-5-prod",
+			"credentials": {
+				
+			}
+		}]
+	},
+
+	"log4js": {
+		"replaceConsole": true,
+		"appenders": [{
+			"type": "console"
+		}, {
+			"type": "dateFile",
+			"filename": "logs/giftapp-${env}",
+			"pattern": "-yyyy-MM-dd.log",
+			"alwaysIncludePattern": true,
+			"layout": {
+				"type": "colored"
+			}
+		}],
+		"levels": {
+			"[default]": "all"
+		}
+	}
+
+
+}
