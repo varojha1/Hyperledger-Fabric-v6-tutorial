@@ -1,0 +1,81 @@
+{
+	"env": "local",
+	"processname": "BlockchainSampleClient",
+	"request": {
+		"size": "16mb"
+	},
+
+	"chaincode": {
+		"id": "7b05218e275621dc6a1864709061895e13bbc186d2a90de179513f67e410f386b147d2605034daef2cb6d43c05b2e9a3630b3775f7aa0ae28576d6449469c4d1",
+		"name": "cp_chaincode"
+	},
+
+	"databases": {
+		"devWorksAppMaster": "devworks_app_master2"
+
+	},
+
+	"VCAP_SERVICES": {
+		"ibm-blockchain-5-prod": [{
+			"name": "Blockchain-v6-devWorks",
+			"label": "ibm-blockchain-5-prod",
+			"plan": "ibm-blockchain-plan-5-prod",
+			"credentials": {
+				"peers": [{
+					"discovery_host": "localhost",
+					"discovery_port": 7051,
+					"api_port_tls": 5002,
+					"api_port": 5002,
+					"event_host": "localhost",
+					"event_port": 7053,
+					"type": "peer"
+				}],
+				"ca": {
+					"843a58f61e4b44f790d01deb2f9b9b38-ca": {
+						"url": "localhost:7054",
+						"discovery_host": "localhost",
+						"discovery_port": 7054,
+						"api_port_tls": 30002,
+						"api_port": 30002,
+						"type": "ca"
+					}
+				},
+				"users": [{
+					"enrollId": "admin",
+					"enrollSecret": "Xurw3yU9zI0l",
+					"affiliation": "institution_a",
+					"username": "admin",
+					"secret": "Xurw3yU9zI0l"
+				}, {
+					"enrollId": "WebAppAdmin",
+					"enrollSecret": "DJY27pEnl16d",
+					"affiliation": "institution_a",
+					"username": "WebAppAdmin",
+					"secret": "DJY27pEnl16d"
+				}],
+				"cert": "https://blockchain-certs.mybluemix.net/us.blockchain.ibm.com.cert",
+				"cert_path": "/certs/peer/cert.pem"
+			}
+		}]
+	},
+
+	"log4js": {
+		"replaceConsole": true,
+		"appenders": [{
+			"type": "console"
+		}, {
+			"type": "dateFile",
+			"filename": "logs/giftapp-${env}",
+			"pattern": "-yyyy-MM-dd.log",
+			"alwaysIncludePattern": true,
+			"layout": {
+				"type": "colored"
+			}
+		}],
+		"levels": {
+			"[default]": "all"
+		}
+	}
+
+
+}

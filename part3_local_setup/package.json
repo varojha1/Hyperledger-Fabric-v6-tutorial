@@ -1,0 +1,21 @@
+{
+  "name": "BlockchainNodeClient",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "cfenv": "^1.0.4",
+    "cloudant": "^1.7.1",
+    "collections": "^3.0.0",
+    "config": "^1.20.1",
+    "express": "^4.15.2",
+    "hfc": "^0.6.5",
+    "log4js": "^0.6.33",
+    "underscore": "^1.8.3",
+    "uuid": "^2.0.2"
+  },
+  "repository": {},
+  "engines": {
+    "node": "4.3.2"
+  }
+}
