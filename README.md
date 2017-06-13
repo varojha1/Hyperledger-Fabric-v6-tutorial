@@ -28,3 +28,9 @@ In this tutorial, the conclusion of a three-part series, you'll learn how to dev
 
 Access the detailed tutorial here
 https://www.ibm.com/developerworks/cloud/library/cl-ibm-blockchain-node-client-app/index.html?ca=drs-
+
+Part 3 with local setup: Develop a client application for a blockchain network based on Hyperledger Fabric v0.6
+
+Part3_local_setup has the modfied sample client code that can run with a local installation of Hyperledger Fabric v0.6. It uses the default file based key value store implementation. It has been tested with the Hyperledger v0.6 fabric images that can be found here https://github.com/varojha1/hyperledger-fabric-images-v6
+
+Tested with the four peer network.
