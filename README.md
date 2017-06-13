@@ -33,4 +33,4 @@ Part 3 with local setup: Develop a client application for a blockchain network b
 
 Part3_local_setup has the modfied sample client code that can run with a local installation of Hyperledger Fabric v0.6. It uses the default file based key value store implementation. It has been tested with the Hyperledger v0.6 fabric images that can be found here https://github.com/varojha1/hyperledger-fabric-images-v6
 
-Tested with the four peer network.
+Please follow the steps outlined in the tutorial above to deploy your chaincode and update the runtime.json file with the chaincode ID. Tested with the four peer network.
